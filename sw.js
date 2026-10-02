@@ -1,8 +1,9 @@
-const CACHE_NAME = 'alp-portal-v1';
+const CACHE_NAME = 'alp-portal-v3';
 const ASSETS = [
   './index.html',
   './manifest.json',
-  './icon.png'
+  './icon.png',
+  './notice.jpg'
 ];
 
 self.addEventListener('install', (e) => {
