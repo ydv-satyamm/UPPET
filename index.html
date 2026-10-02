@@ -386,6 +386,29 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
 
+    .sub-poster {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      background: var(--card-icon-bg);
+      border: 1px solid var(--card-icon-border);
+      color: var(--card-icon-color);
+    }
+
     .card-info {
       flex: 1;
       min-width: 0;
@@ -429,6 +452,266 @@
       background: var(--accent-color);
       color: #fff;
       transform: translateX(4px);
+    }
+
+    .expandable-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .expandable-container.active > .link-card {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-color: var(--card-hover-border);
+    }
+
+    .chevron-arrow {
+      transition: transform 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .expandable-container.active > .link-card .chevron-arrow {
+      transform: rotate(180deg);
+    }
+
+    .subtopics-list {
+      display: none;
+      background: rgba(20, 7, 24, 0.85);
+      border: 1px solid var(--card-border);
+      border-top: none;
+      border-radius: 0 0 18px 18px;
+      padding: 12px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+      width: 100%;
+    }
+
+    .expandable-container.active > .subtopics-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sub-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 11px 16px;
+      color: #ffd8ec;
+      text-decoration: none;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: all 0.25s ease;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .sub-item:hover {
+      background: rgba(255, 77, 148, 0.18);
+      border-color: var(--accent-color);
+      color: #fff;
+    }
+
+    .sub-item-content {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .sub-item-content span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .sub-item i {
+      color: var(--accent-color);
+      font-size: 0.95rem;
+      flex-shrink: 0;
+      margin-left: auto;
+    }
+
+    .sub-item .fa-brands.fa-telegram {
+      color: #26a5e4;
+      font-size: 1.15rem;
+    }
+
+    .live-wrapper {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .blue-time-glow {
+      background: rgba(14, 165, 233, 0.15);
+      border: 1.5px solid #00f0ff;
+      color: #e0faff;
+      font-weight: 800;
+      font-size: 0.78rem;
+      letter-spacing: 0.5px;
+      padding: 4px 10px;
+      border-radius: 8px;
+      text-transform: uppercase;
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.7), inset 0 0 8px rgba(0, 240, 255, 0.35);
+      text-shadow: 0 0 6px #00f0ff;
+      animation: bluePulse 1.8s infinite alternate ease-in-out;
+      transform: skewX(-10deg);
+      white-space: nowrap;
+    }
+
+    .blue-time-glow span {
+      display: inline-block;
+      transform: skewX(10deg);
+    }
+
+    @keyframes bluePulse {
+      0% { box-shadow: 0 0 8px rgba(0, 240, 255, 0.45); }
+      100% { box-shadow: 0 0 16px rgba(0, 240, 255, 0.95); }
+    }
+
+    .live-stream-badge-container {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .live-stream-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: linear-gradient(135deg, #e60000 0%, #ff1a1a 45%, #b30000 100%);
+      color: #ffffff;
+      padding: 4px 14px 4px 10px;
+      border-radius: 8px;
+      transform: skewX(-12deg);
+      box-shadow: 0 0 16px rgba(255, 26, 26, 0.85);
+      border: 1px solid rgba(255, 120, 120, 0.4);
+      animation: liveGlowPulse 1.8s infinite alternate ease-in-out;
+    }
+
+    .live-dot {
+      width: 6.5px;
+      height: 6.5px;
+      background-color: #ffffff;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #ffffff;
+      animation: blinkDot 1s infinite alternate;
+      transform: skewX(12deg);
+    }
+
+    .live-text {
+      font-weight: 900;
+      font-style: italic;
+      letter-spacing: 1.5px;
+      font-size: 0.95rem;
+      color: #ffffff;
+      text-transform: uppercase;
+      transform: skewX(12deg);
+    }
+
+    .live-stream-waves {
+      position: absolute;
+      right: -12px;
+      top: -7px;
+      color: #ff1a1a;
+      font-size: 0.95rem;
+      filter: drop-shadow(0 0 6px #ff0000);
+      animation: broadcastFade 1.2s infinite ease-in-out alternate;
+    }
+
+    .streaming-caption {
+      font-size: 0.62rem;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      color: #000000;
+      text-transform: uppercase;
+      font-style: italic;
+      margin-top: 2px;
+      position: relative;
+      text-shadow: -1px -1px 0 #ff3344, 1px -1px 0 #ff3344, -1px 1px 0 #ff3344, 1px 1px 0 #ff3344, 0 0 6px #ff0033;
+    }
+
+    .streaming-caption::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #ff1a1a;
+    }
+
+    .schedule-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin-top: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .schedule-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 8px;
+    }
+
+    .schedule-header a {
+      color: #38bdf8;
+      font-size: 0.82rem;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: 1f;
+      gap: 6px;
+    }
+
+    @media (min-width: 580px) {
+      .schedule-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .schedule-entry-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      border-left: 2.5px solid var(--accent-color);
+    }
+
+    .schedule-subject {
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .schedule-time {
+      color: #94a3b8;
+      font-size: 0.76rem;
+      font-family: monospace;
     }
 
     /* PWA POPUP DIALOG */
@@ -631,13 +914,14 @@
         flex-wrap: wrap;
       }
 
-      .card-poster {
+      .card-poster, .card-icon {
         width: 42px;
         height: 42px;
+        font-size: 1.1rem;
       }
 
       .card-info {
-        flex: 1 1 calc(100% - 70px);
+        flex: 1 1 calc(100% - 90px);
       }
 
       .card-info h3 {
@@ -648,10 +932,45 @@
         font-size: 0.74rem;
       }
 
+      .link-card > .live-wrapper {
+        order: 3;
+        width: 100%;
+        justify-content: flex-start;
+        margin-top: 6px;
+        padding-top: 6px;
+        border-top: 1px dashed rgba(255, 255, 255, 0.08);
+      }
+
       .arrow-box {
         width: 28px;
         height: 28px;
         font-size: 0.75rem;
+      }
+
+      .sub-item {
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 8px 10px;
+      }
+
+      .sub-item-content {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .sub-item-content span {
+        font-size: 0.82rem;
+      }
+
+      .schedule-entry-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+      }
+
+      .schedule-time {
+        font-size: 0.7rem;
       }
     }
 
@@ -684,6 +1003,29 @@
   </style>
 </head>
 <body class="theme-night">
+
+  <!-- NOTICE POPUP MODAL (Appears every time the page is opened) -->
+  <div class="pwa-modal-overlay" id="noticeModalOverlay" style="display: flex;">
+    <div class="pwa-modal-card" style="max-width: 480px; padding: 18px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <h2 style="font-size: 1.2rem; margin: 0; color: #ff94c2;"><i class="fa-solid fa-bullhorn"></i> IMPORTANT NOTICE</h2>
+        <button onclick="closeNoticeModal()" style="background: transparent; border: none; color: #fff; font-size: 1.3rem; cursor: pointer;"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div style="width: 100%; border-radius: 12px; overflow: hidden; border: 1.5px solid #00f0ff; margin-bottom: 16px;">
+        <img src="https://drive.google.com/uc?export=view&id=1Lj-RcUlZMFqjM3HE0E8VY_eWDnyfYccD" alt="Notice Image" style="width: 100%; height: auto; display: block;">
+      </div>
+      <button onclick="closeNoticeModal()" class="btn-install-pwa" style="width: 100%;">
+        <i class="fa-solid fa-check"></i> THEEK HAI (CLOSE)
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function closeNoticeModal() {
+      const modal = document.getElementById('noticeModalOverlay');
+      if (modal) modal.style.display = 'none';
+    }
+  </script>
 
   <!-- INSTALL AS APP POPUP MODAL -->
   <div class="pwa-modal-overlay" id="pwaModalOverlay">
@@ -825,7 +1167,7 @@
     </div>
 
     <footer>
-      Crafted with <i class="fa-solid fa-heart"></i> ⚡️️ Powered by 𓊈 ꕶ𝐚𐍄ꪗ𝓪𝓂 𓊉 🚩
+      Crafted with <i class="fa-solid fa-heart"></i> ⚡️ Powered by 𓊈 ꕶ𝐚𐍄ꪗ𝓪𝓂 𓊉 🚩
     </footer>
   </div>
 
@@ -1024,7 +1366,7 @@
     window.addEventListener('mousemove', (e) => {
       if (!isMouseDown) return;
       const vx = e.clientX - lastSwipeX;
-      spawnSwipeTrail(e.clientX, e.clientY, vx);
+      spawnSwipeTrail(e.clientX, e.logits ? e.logits[1] : e.clientY, vx);
       lastSwipeX = e.clientX;
       lastSwipeY = e.clientY;
     });
