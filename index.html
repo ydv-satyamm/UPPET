@@ -682,7 +682,7 @@
 
     .schedule-grid {
       display: grid;
-      grid-template-columns: 1f;
+      grid-template-columns: 1fr;
       gap: 6px;
     }
 
@@ -1012,7 +1012,7 @@
         <button onclick="closeNoticeModal()" style="background: transparent; border: none; color: #fff; font-size: 1.3rem; cursor: pointer;"><i class="fa-solid fa-xmark"></i></button>
       </div>
       <div style="width: 100%; border-radius: 12px; overflow: hidden; border: 1.5px solid #00f0ff; margin-bottom: 16px;">
-        <img src="https://drive.google.com/uc?export=view&id=1Lj-RcUlZMFqjM3HE0E8VY_eWDnyfYccD" alt="Notice Image" style="width: 100%; height: auto; display: block;">
+        <img src="https://lh3.googleusercontent.com/d/1Lj-RcUlZMFqjM3HE0E8VY_eWDnyfYccD=s1000" alt="Notice Image" style="width: 100%; height: auto; display: block;">
       </div>
       <button onclick="closeNoticeModal()" class="btn-install-pwa" style="width: 100%;">
         <i class="fa-solid fa-check"></i> THEEK HAI (CLOSE)
@@ -1074,7 +1074,7 @@
 
     <!-- NOTICE BANNER / IMAGE -->
     <div class="notice-banner-container searchable-entry">
-      <img src="https://drive.google.com/uc?export=view&id=1Lj-RcUlZMFqjM3HE0E8VY_eWDnyfYccD" alt="Important Notice" id="noticeImage">
+      <img src="https://lh3.googleusercontent.com/d/1Lj-RcUlZMFqjM3HE0E8VY_eWDnyfYccD=s1000" alt="Important Notice" id="noticeImage">
     </div>
 
     <!-- Cards List -->
@@ -1366,7 +1366,7 @@
     window.addEventListener('mousemove', (e) => {
       if (!isMouseDown) return;
       const vx = e.clientX - lastSwipeX;
-      spawnSwipeTrail(e.clientX, e.logits ? e.logits[1] : e.clientY, vx);
+      spawnSwipeTrail(e.clientX, e.clientY, vx);
       lastSwipeX = e.clientX;
       lastSwipeY = e.clientY;
     });
