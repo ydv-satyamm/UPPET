@@ -37,6 +37,51 @@
       --card-subtext: #c99fb5;
     }
 
+    body.theme-morning {
+      --bg-gradient: linear-gradient(135deg, #2e1814 0%, #4a2118 40%, #7c3b24 75%, #a85834 100%);
+      --accent-color: #ff9e42;
+      --accent-glow: rgba(255, 158, 66, 0.45);
+      --badge-bg: rgba(255, 183, 77, 0.18);
+      --badge-border: rgba(255, 183, 77, 0.45);
+      --badge-text: #ffe082;
+      --heading-gradient: linear-gradient(90deg, #ffe082 0%, #ffab40 50%, #ff6e40 100%);
+      --card-bg: rgba(54, 26, 18, 0.75);
+      --card-hover-bg: rgba(78, 38, 26, 0.85);
+      --card-border: rgba(255, 171, 64, 0.25);
+      --card-hover-border: rgba(255, 171, 64, 0.7);
+      --card-subtext: #e6bba8;
+    }
+
+    body.theme-afternoon {
+      --bg-gradient: linear-gradient(135deg, #0b1118 0%, #151d28 45%, #0f1620 100%);
+      --accent-color: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.45);
+      --badge-bg: rgba(56, 189, 248, 0.15);
+      --badge-border: rgba(56, 189, 248, 0.4);
+      --badge-text: #7dd3fc;
+      --heading-gradient: linear-gradient(90deg, #93c5fd 0%, #38bdf8 50%, #a5f3fc 100%);
+      --card-bg: rgba(18, 27, 39, 0.78);
+      --card-hover-bg: rgba(26, 40, 58, 0.88);
+      --card-border: rgba(56, 189, 248, 0.22);
+      --card-hover-border: rgba(56, 189, 248, 0.65);
+      --card-subtext: #94a3b8;
+    }
+
+    body.theme-evening {
+      --bg-gradient: linear-gradient(135deg, #18091f 0%, #2f1228 40%, #461927 75%, #2a0b16 100%);
+      --accent-color: #f472b6;
+      --accent-glow: rgba(244, 114, 182, 0.35);
+      --badge-bg: rgba(244, 114, 182, 0.16);
+      --badge-border: rgba(244, 114, 182, 0.38);
+      --badge-text: #fbcfe8;
+      --heading-gradient: linear-gradient(90deg, #fbcfe8 0%, #f472b6 50%, #fb923c 100%);
+      --card-bg: rgba(41, 15, 34, 0.72);
+      --card-hover-bg: rgba(61, 22, 51, 0.82);
+      --card-border: rgba(244, 114, 182, 0.22);
+      --card-hover-border: rgba(244, 114, 182, 0.6);
+      --card-subtext: #cca4b8;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -54,6 +99,18 @@
       flex-direction: column;
       align-items: center;
       position: relative;
+      transition: background 1s ease;
+    }
+
+    #ambientLayer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
     }
 
     .container {
@@ -191,7 +248,7 @@
       flex-shrink: 0;
     }
 
-    /* NOTICE POPUP MODAL (Appears every time website opens) */
+    /* NOTICE POPUP MODAL (Har baar open karne par full screen/large view me aayega) */
     .pwa-modal-overlay {
       display: flex;
       position: fixed;
@@ -199,53 +256,53 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(10, 3, 14, 0.82);
-      backdrop-filter: blur(8px);
+      background: rgba(10, 3, 14, 0.88);
+      backdrop-filter: blur(10px);
       z-index: 100000;
       align-items: center;
       justify-content: center;
-      padding: 16px;
+      padding: 12px;
     }
 
     .pwa-modal-card {
-      background: linear-gradient(135deg, rgba(45, 14, 38, 0.95) 0%, rgba(20, 7, 24, 0.98) 100%);
-      border: 1.5px solid #00f0ff;
+      background: linear-gradient(135deg, rgba(45, 14, 38, 0.98) 0%, rgba(20, 7, 24, 0.99) 100%);
+      border: 2px solid #00f0ff;
       border-radius: 24px;
-      box-shadow: 0 0 35px rgba(0, 240, 255, 0.5);
+      box-shadow: 0 0 40px rgba(0, 240, 255, 0.6);
       width: 100%;
-      max-width: 440px;
-      padding: 22px;
-      text-align: center;
+      max-width: 600px;
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .notice-img-wrap {
+      flex: 1;
+      overflow-y: auto;
+      border-radius: 12px;
+      border: 1.5px solid rgba(0, 240, 255, 0.5);
+      margin-bottom: 16px;
+      background: #000;
+    }
+
+    .notice-img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     .btn-close-notice {
       background: linear-gradient(135deg, #00f0ff 0%, #0284c7 100%);
       color: #000;
       font-weight: 800;
-      padding: 12px 20px;
-      border-radius: 12px;
+      font-size: 1.05rem;
+      padding: 14px 20px;
+      border-radius: 14px;
       border: none;
       cursor: pointer;
       width: 100%;
-      margin-top: 14px;
-      box-shadow: 0 0 16px rgba(0, 240, 255, 0.6);
-    }
-
-    .notice-banner-container {
-      width: 100%;
-      margin-bottom: 24px;
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1.5px solid var(--card-hover-border);
-      background: var(--card-bg);
-    }
-
-    .notice-banner-container img {
-      width: 100%;
-      height: auto;
-      display: block;
-      max-height: 280px;
-      object-fit: cover;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.7);
     }
 
     footer {
@@ -258,15 +315,15 @@
 </head>
 <body class="theme-night">
 
-  <!-- NOTICE POPUP MODAL -->
+  <!-- NOTICE POPUP MODAL (Har open par aayega) -->
   <div class="pwa-modal-overlay" id="noticeModalOverlay">
     <div class="pwa-modal-card">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-        <h2 style="font-size: 1.2rem; margin: 0; color: #ff94c2;"><i class="fa-solid fa-bullhorn"></i> IMPORTANT NOTICE</h2>
-        <button onclick="closeNoticeModal()" style="background: transparent; border: none; color: #fff; font-size: 1.3rem; cursor: pointer;"><i class="fa-solid fa-xmark"></i></button>
+        <h2 style="font-size: 1.25rem; margin: 0; color: #ff94c2;"><i class="fa-solid fa-bullhorn"></i> IMPORTANT NOTICE</h2>
+        <button onclick="closeNoticeModal()" style="background: transparent; border: none; color: #fff; font-size: 1.5rem; cursor: pointer;"><i class="fa-solid fa-xmark"></i></button>
       </div>
-      <div style="width: 100%; border-radius: 12px; overflow: hidden; border: 1.5px solid #00f0ff; margin-bottom: 12px;">
-        <img src="https://lh3.googleusercontent.com/d/1Lj-RcUlZMFqjM3HE0E8VY_eWDnyfYccD=s1000" alt="Notice Image" style="width: 100%; display: block;">
+      <div class="notice-img-wrap">
+        <img src="notice.jpg" alt="Notice Image">
       </div>
       <button onclick="closeNoticeModal()" class="btn-close-notice">
         <i class="fa-solid fa-check"></i> THEEK HAI (CLOSE)
@@ -274,17 +331,28 @@
     </div>
   </div>
 
-  <script>
-    function closeNoticeModal() {
-      document.getElementById('noticeModalOverlay').style.display = 'none';
-    }
-  </script>
+  <!-- INSTALL APP PROMPT MODAL (Sirf pehli baar ya manual trigger ke liye) -->
+  <div class="pwa-modal-overlay" id="installModalOverlay" style="display: none;">
+    <div class="pwa-modal-card" style="max-width: 400px; text-align: center;">
+      <div style="width: 76px; height: 76px; margin: 0 auto 14px; border-radius: 18px; overflow: hidden; border: 2px solid #00f0ff;">
+        <img src="icon.png" alt="App Icon" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+      <h2 style="color: #fff; font-size: 1.3rem; margin-bottom: 6px;">INSTALL ALP PORTAL</h2>
+      <p style="color: #cbd5e1; font-size: 0.88rem; margin-bottom: 20px;">Aapke sabhi important classes aur study links ek jagah. Seedhe apne device par install karein!</p>
+      <button class="btn-close-notice" id="modalInstallBtn" style="margin-bottom: 10px;">
+        <i class="fa-solid fa-download"></i> INSTALL APP
+      </button>
+      <button onclick="document.getElementById('installModalOverlay').style.display='none'" style="background: transparent; border: none; color: #94a3b8; font-size: 0.85rem; cursor: pointer; padding: 6px;">Baad me karenge</button>
+    </div>
+  </div>
+
+  <div id="ambientLayer"></div>
 
   <div class="container">
     <header>
       <div class="love-badge">
-        <i class="fa-solid fa-heart"></i>
-        <span>Night Focus</span>
+        <i id="badgeIcon" class="fa-solid fa-heart"></i>
+        <span id="badgeText">Night Focus</span>
       </div>
       <h1>ALP PORTAL</h1>
       <p>Aapke sabhi important classes aur study links ek jagah 💕</p>
@@ -293,11 +361,6 @@
     <div class="search-box">
       <i class="fa-solid fa-magnifying-glass"></i>
       <input type="text" id="searchInput" placeholder="Search batch, subject or teacher..." onkeyup="filterLinks()">
-    </div>
-
-    <!-- NOTICE BANNER -->
-    <div class="notice-banner-container searchable-entry">
-      <img src="https://lh3.googleusercontent.com/d/1Lj-RcUlZMFqjM3HE0E8VY_eWDnyfYccD=s1000" alt="Notice Banner">
     </div>
 
     <!-- CARDS LIST -->
@@ -372,6 +435,11 @@
   </div>
 
   <script>
+    function closeNoticeModal() {
+      const modal = document.getElementById('noticeModalOverlay');
+      if (modal) modal.style.display = 'none';
+    }
+
     function filterLinks() {
       const input = document.getElementById('searchInput').value.toLowerCase().trim();
       document.querySelectorAll('.searchable-entry').forEach(entry => {
@@ -379,6 +447,67 @@
       });
     }
 
+    // Time-based theme & atmosphere restoration
+    function applyTimeBasedThemeAndAtmosphere() {
+      const currentHour = new Date().getHours();
+      const ambient = document.getElementById('ambientLayer');
+      if (!ambient) return;
+      ambient.innerHTML = '';
+
+      let themeClass = 'theme-night';
+      let badgeLabel = 'Night Focus 🌙';
+      let badgeIcon = 'fa-heart';
+
+      if (currentHour >= 5 && currentHour < 12) {
+        themeClass = 'theme-morning';
+        badgeLabel = 'Golden Sunrise ☀️';
+        badgeIcon = 'fa-sun';
+      } else if (currentHour >= 12 && currentHour < 17) {
+        themeClass = 'theme-afternoon';
+        badgeLabel = 'Stormy Afternoon ⛈️';
+        badgeIcon = 'fa-bolt-lightning';
+      } else if (currentHour >= 17 && currentHour < 21) {
+        themeClass = 'theme-evening';
+        badgeLabel = 'Sunset Twilight 🌇';
+        badgeIcon = 'fa-dove';
+      }
+
+      document.body.className = themeClass;
+      document.getElementById('badgeText').innerText = badgeLabel;
+      document.getElementById('badgeIcon').className = `fa-solid ${badgeIcon}`;
+    }
+
+    applyTimeBasedThemeAndAtmosphere();
+
+    // PWA Install Prompt (Sirf pehli baar aayega)
+    let deferredPrompt = null;
+    const installModal = document.getElementById('installModalOverlay');
+    const modalInstallBtn = document.getElementById('modalInstallBtn');
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      if (!isStandalone && !localStorage.getItem('pwa_installed_prompt')) {
+        installModal.style.display = 'flex';
+      }
+    });
+
+    if (modalInstallBtn) {
+      modalInstallBtn.addEventListener('click', async () => {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          const { outcome } = await deferredPrompt.userChoice;
+          if (outcome === 'accepted') {
+            localStorage.setItem('pwa_installed_prompt', 'true');
+          }
+          deferredPrompt = null;
+        }
+        installModal.style.display = 'none';
+      });
+    }
+
+    // Service Worker Registration
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('./sw.js').catch(err => console.log(err));
